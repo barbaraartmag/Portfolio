@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Botanika · Projeto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #cdbba3;
+      color: #435b3a;
+      cursor: none;
+    }
+
+    body, a, button {
+      cursor: none !important;
+    }
+
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      background-color: #798f74;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-grow {
+      transform: scale(2) translate(-50%, -50%) !important;
+    }
+
+    .cursor-click {
+      transform: scale(2.5) translate(-50%, -50%) !important;
+    }
+
+    .header {
+      width: 100%;
+      padding: 1.5rem 2rem;
+      background: #cdbba3;
+      color: #435b3a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(67, 91, 58, 0.2);
+    }
+
+    .header-left {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .back-home-button {
+      padding: 0.5rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: 2px solid #435b3a;
+      border-radius: 999px;
+      background: transparent;
+      color: #435b3a;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .back-home-button:hover {
+      background: #435b3a;
+      color: white;
+    }
+
+    .project-details {
+      display: flex;
+      justify-content: space-between;
+      gap: 2rem;
+      background: #cdbba3;
+      color: #435b3a;
+      padding: 4rem 2rem;
+      flex-wrap: wrap;
+      max-width: 1000px;
+      margin: 3rem auto 2rem;
+      border-radius: 16px;
+    }
+
+    .project-info-left {
+      flex: 1 1 500px;
+    }
+
+    .project-info-left h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #435b3a;
+    }
+
+    .project-info-left p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #798f74;
+    }
+
+    .project-info-right {
+      flex: 1 1 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      font-size: 1rem;
+    }
+
+    .project-info-right div {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+
+    .project-info-right div span:first-child {
+      color: #798f74;
+    }
+
+    .project-info-right hr {
+      border: none;
+      border-top: 1px solid #435b3a;
+    }
+
+    .project-images {
+      max-width: 900px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .project-images img {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(67, 91, 58, 0.2);
+      font-size: 0.85rem;
+      color: #435b3a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cursor personalizado -->
+  <div id="custom-cursor"></div>
+
+  <!-- Cabeçalho -->
+  <div class="header">
+    <span class="header-left">LOCAL / <span id="clock">--:--:--</span></span>
+    <button class="back-home-button" onclick="window.location.href='index.html'">VOLTAR PARA TRÁS</button>
+  </div>
+
+  <!-- Detalhes do Projeto -->
+  <section class="project-details">
+    <div class="project-info-left">
+      <h1>BOTANIKA</h1>
+      <p>
+        Botanika é uma marca de cosméticos veganos, artesanais e sustentáveis.
+        Todos os produtos são feitos com ingredientes naturais e cultivados de forma orgânica, sem testes em animais. Acreditamos no equilíbrio entre beleza, bem-estar e natureza.
+      </p>
+    </div>
+    <div class="project-info-right">
+      <div><span>CLIENTE</span><span>PROJETO FICTÍCIO</span></div>
+      <hr />
+      <div><span>ANO</span><span>2024</span></div>
+      <hr />
+      <div><span>CATEGORIA</span><span>DESIGN · BRANDING</span></div>
+    </div>
+  </section>
+
+  <!-- Galeria de Imagens -->
+  <div class="project-images">
+    <img src="img/Botanika/banner.png" alt="Banner Botanika">
+    <img src="img/Botanika/site.png" alt="Website Botanika">
+    <img src="img/Botanika/Velas.png" alt="Velas Botanika">
+    <img src="img/Botanika/KIT 1.png" alt="Kit 1 Botanika">
+    <img src="img/Botanika/KIT 5.png" alt="Kit 5 Botanika">
+    <img src="img/Botanika/MERCH.png" alt="Merch Botanika">
+    <img src="img/Botanika/REDES.png" alt="Redes Sociais Botanika">
+    <img src="img/Botanika/STICKERS.png" alt="Stickers Botanika">
+  </div>
+
+  <!-- Rodapé -->
+  <footer>
+    &copy; 2025 Bárbara Magalhães · Todos os direitos reservados
+  </footer>
+
+  <!-- JS: Relógio e Cursor -->
+  <script>
+    // Relógio ao vivo
+    function updateClock() {
+      const now = new Date();
+      const time = now.toLocaleTimeString('pt-PT', { hour12: false });
+      const clock = document.getElementById("clock");
+      if (clock) clock.textContent = time;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Cursor personalizado
+    const cursor = document.getElementById("custom-cursor");
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+    const speed = 0.2;
+
+    function animateCursor() {
+      currentX += (mouseX - currentX) * speed;
+      currentY += (mouseY - currentY) * speed;
+      cursor.style.top = `${currentY}px`;
+      cursor.style.left = `${currentX}px`;
+      requestAnimationFrame(animateCursor);
+    }
+
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    animateCursor();
+
+    const interactiveElements = document.querySelectorAll("a, button");
+
+    interactiveElements.forEach(el => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("cursor-grow"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("cursor-grow"));
+    });
+
+    document.addEventListener("mousedown", () => cursor.classList.add("cursor-click"));
+    document.addEventListener("mouseup", () => cursor.classList.remove("cursor-click"));
+  </script>
+
+</body>
+</html>

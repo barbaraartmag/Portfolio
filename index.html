@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bárbara Magalhães · Designer Gráfica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #cdbba3;
+      color: #435b3a;
+      cursor: none;
+    }
+
+    body, a, button {
+      cursor: none !important;
+    }
+
+    #custom-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      background-color: #798f74;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 1;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-grow {
+      transform: scale(2) translate(-50%, -50%) !important;
+    }
+
+    .cursor-click {
+      transform: scale(2.5) translate(-50%, -50%) !important;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #cdbba3;
+      position: relative;
+      z-index: 10;
+    }
+
+    .topbar span, .contact-button {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .contact-button {
+      padding: 0.5rem 1rem;
+      border: 2px solid #435b3a;
+      border-radius: 999px;
+      background: transparent;
+      color: #435b3a;
+      text-decoration: none;
+    }
+
+    .contact-button:hover {
+      background: #435b3a;
+      color: white;
+    }
+
+    .menu-button {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+      width: 24px;
+      height: 24px;
+    }
+
+    .menu-button .dot {
+      width: 8px;
+      height: 8px;
+      background: #435b3a;
+      border-radius: 50%;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-footer-text {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      right: 2rem;
+      display: flex;
+      justify-content: space-between;
+      font-weight: 500;
+      color: #435b3a;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .hero-footer-text.hide {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    #projetos {
+      padding: 4rem 2rem;
+      background: #cabca6;
+    }
+
+    #projetos h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .masonry {
+      column-count: 3;
+      column-gap: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .masonry {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .masonry {
+        column-count: 1;
+      }
+    }
+
+    .masonry a {
+      display: block;
+      position: relative;
+      break-inside: avoid;
+      margin-bottom: 1.5rem;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .masonry img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .masonry a:hover img {
+      transform: scale(1.05);
+    }
+
+    .masonry a::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .masonry a:hover::after {
+      opacity: 1;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .photo {
+      width: 240px;
+      height: 320px;
+      border-radius: 50% / 40%;
+      margin: 2rem auto;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #435b3a;
+      color: white;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #cdbba3;
+    }
+      .logo-carousel {
+      overflow: hidden;
+      background: #cdbba3;
+      padding: 2rem 0;
+    }
+
+    .logo-track {
+      display: flex;
+      gap: 3rem;
+      animation: scrollLogos 20s linear infinite;
+      width: max-content;
+    }
+
+    .logo-track img {
+      height: 80px;
+      object-fit: contain;
+    }
+
+    @keyframes scrollLogos {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+        .experience {
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    .experience .job {
+      margin-bottom: 5rem;
+    }
+
+    .experience .job-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+
+    .experience .role {
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+  .call-to-action {
+      background: #cabca6;
+      color: #435b3a;
+      text-align: center;
+      padding: 6rem 2rem 3rem;
+    }
+
+    .call-to-action h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+
+    .call-to-action .cta-button {
+      display: inline-block;
+      background: transparent;
+      color: #435b3a;
+      border: 2px solid #435b3a;
+      padding: 0.75rem 2rem;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .call-to-action .cta-button:hover {
+      background: #435b3a;
+      color: white;
+    }
+
+    .cta-image {
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 3rem auto 2rem;
+    }
+
+    .cta-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cta-text {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .cta-links {
+      margin-top: 2rem;
+      font-weight: bold;
+    }
+
+    .cta-links a {
+      margin: 0 1rem;
+      color: #435b3a;
+      text-decoration: none;
+    }
+
+    .cta-links a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #cdbba3;
+      position: relative;
+      z-index: 10;
+    }
+
+    .topbar span, .contact-button {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .contact-button {
+      padding: 0.5rem 1rem;
+      border: 2px solid #435b3a;
+      border-radius: 999px;
+      background: transparent;
+      color: #435b3a;
+      text-decoration: none;
+    }
+
+    .contact-button:hover {
+      background: #435b3a;
+      color: white;
+    }
+
+.menu-button {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4px;
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.menu-button:hover {
+  transform: rotate(45deg);
+}
+
+
+    .menu-button .dot {
+      width: 8px;
+      height: 8px;
+      background: #435b3a;
+      border-radius: 50%;
+    }
+
+.fullscreen-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #cdbba3;
+  color: #435b3a;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+  transition: opacity 0.3s ease;
+}
+
+.fullscreen-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  position: absolute;
+  top: 0;
+  background: #cdbba3;
+  color: #435b3a;
+  z-index: 9999;
+}
+
+.fullscreen-time {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.fullscreen-menu .contact-button {
+  border-color: #435b3a;
+  color: #435b3a;
+  background: transparent;
+}
+
+.fullscreen-menu .contact-button:hover {
+  background: #435b3a;
+  color: white;
+}
+
+.fullscreen-menu .close-btn {
+  position: static;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #435b3a;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.fullscreen-menu nav a {
+  display: block;
+  font-size: 3rem;
+  margin: 1rem 0;
+  color: #435b3a;
+  text-decoration: none;
+  font-weight: 700;
+  text-align: center;
+}
+
+.fullscreen-menu nav a:hover {
+  text-decoration: underline;
+}
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: #cdbba3;
+    }
+
+/* CONTACT OVERLAY */
+.contact-overlay {
+  position: fixed;
+  inset: 0;
+  background: #cdbba3;
+  color: #435b3a;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10rem 6rem 8rem; /* Aumenta o padding-top aqui */
+  z-index: 9999;
+  overflow-y: auto;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.contact-left, .contact-right {
+  flex: 1 1 350px;
+  min-width: 320px;
+}
+
+.contact-left h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.contact-left p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(67, 91, 58, 0.1);
+  border: 2px solid #435b3a;
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #435b3a;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #888;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background: #435b3a;
+  color: white;
+  border: none;
+  border-radius: 999px;
+  padding: 0.9rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: fit-content;
+  transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+  background: #2f3f2c;
+}
+
+.contact-right {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-right img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+/* BLOCO DE INFORMAÇÕES TEXTO */
+.contact-left h4 {
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: #435b3a;
+}
+
+.contact-left a,
+.contact-left p {
+  color: #435b3a;
+  font-weight: bold;
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+/* "OBRIGADA" e rodapé */
+.thanks {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 800;
+  margin: 4rem 0 2rem;
+}
+
+.footer-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(67, 91, 58, 0.3);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #435b3a;
+  font-weight: bold;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  opacity: 0.8;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .thanks {
+    font-size: 2.5rem;
+  }
+
+  .footer-bar {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+
+    .thanks {
+      text-align: center;
+      font-size: 4rem;
+      font-weight: 800;
+      margin-top: 4rem;
+      color: #435b3a;
+    }
+
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .back-button {
+      background: none;
+      border: none;
+      color: #435b3a;
+      font-weight: bold;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .back-button:hover {
+      opacity: 0.8;
+    }
+        .custom-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 1rem 2rem;
+      background: #cdbba3;
+      color: #435b3a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10000;
+    }
+    .header-left {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    .back-home-button {
+      padding: 0.5rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      border: 2px solid #435b3a;
+      border-radius: 999px;
+      background: transparent;
+      color: #435b3a;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .back-home-button:hover {
+      background: #435b3a;
+      color: white;
+    }
+    main {
+      margin-top: 120px;
+      padding: 2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .intro {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    .contact-section {
+      background: #cabca6;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    input, textarea, button {
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    input, textarea {
+      padding: 1rem;
+      border: 2px solid #435b3a;
+      border-radius: 12px;
+      background: rgba(67, 91, 58, 0.1);
+      color: #435b3a;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #888;
+    }
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    button[type="submit"] {
+      background: #435b3a;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 0.9rem 2rem;
+      font-weight: 600;
+      cursor: pointer;
+      width: fit-content;
+    }
+    button[type="submit"]:hover {
+      background: #2f3f2c;
+    }
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(67, 91, 58, 0.2);
+      font-size: 0.85rem;
+    }
+
+  </style>
+</head>
+<body>
+<div class="fullscreen-menu" id="fullscreenMenu">
+  <div class="fullscreen-header">
+    <button class="close-btn" onclick="closeMenu()">×</button>
+    <a class="contact-button" onclick="openContact()">CONTACTAR AGORA</a>
+  </div>
+
+</div>
+
+  <div class="topbar">
+    <div class="menu-button" id="menuToggle">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+    <span>LOCAL / <span id="clock">--:--:--</span></span>
+    <a class="contact-button" onclick="openContact()">CONTACTAR AGORA</a>
+
+  </div>
+
+<div class="contact-overlay" id="contactOverlay">
+  <div class="contact-content">
+
+<div class="custom-header">
+    <button class="back-home-button" onclick="closeContact()">VOLTAR PARA TRÁS</button>
+  </div>
+
+    <!-- COLUNA ESQUERDA: TEXTO + FORMULÁRIO -->
+    <div class="contact-left">
+      <h2>UNIMOS IDEIAS</h2>
+      <p>Dá o primeiro passo — fala connosco!</p>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Formulário enviado!')">
+        <input type="text" name="nome" placeholder="Nome" required />
+        <input type="email" name="email" placeholder="exemplo@exemplo.com" required />
+        <textarea name="mensagem" placeholder="Deixa a tua mensagem" required></textarea>
+        <button type="submit">ENVIAR</button>
+      </form>
+
+      <!-- INFORMAÇÕES DE CONTACTO -->
+      <div style="margin-top: 2rem;">
+        <h4>ACOMPANHA-ME</h4>
+        <a href="#">INSTAGRAM</a><br/>
+        <a href="#">BEHANCE</a>
+
+        <h4 style="margin-top: 1.5rem;">LOCALIZAÇÃO</h4>
+        <p>SILVES</p>
+        <p>FARO</p>
+        <p>PORTUGAL</p>
+
+        <h4 style="margin-top: 1.5rem;">TELEMÓVEL</h4>
+        <p>911 921 748</p>
+
+        <h4 style="margin-top: 1.5rem;">EMAIL</h4>
+        <p>barbarartmagalhaes@hotmail.com</p>
+      </div>
+    </div>
+
+    <!-- COLUNA DIREITA: IMAGEM -->
+    <div class="contact-right">
+      <img src="IMG_6161.jpeg" alt="Foto de Bárbara" />
+    </div>
+  </div>
+
+  <!-- MENSAGEM FINAL -->
+  <div class="thanks">OBRIGADA!</div>
+
+  <!-- RODAPÉ -->
+  <div class="footer-bar">
+    <span>PORTFOLIO 2025</span>
+  </div>
+</div>
+
+  <section class="hero">
+    <p class="portfolio-label">PORTFÓLIO</p>
+    <h1>BÁRBARA<br/>MAGALHÃES</h1>
+    <div class="hero-footer-text" id="heroFooterText">
+      <span>FARO, SILVES</span>
+      <span>DESIGNER MULTIMÉDIA</span>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 2rem; text-align: center; color: #435b3a;">Projetos</h2>
+    <div class="masonry">
+      <a href="botanika.html" target="_blank"><img src="img/Botanika/projetos.png" alt="Botanika"></a>
+      <a href="nomad.html" target="_blank"><img src="img/nomad/logo.png" alt="nomad"></a>
+      <a href="ori.html" target="_blank"><img src="img/ori/banner.png" alt="ORÍ"></a>
+      <a href="unilife.html" target="_blank"><img src="img/unilife/logo + nome.png" alt="UniLife"></a>
+      <a href="TAE.html" target="_blank"><img src="img/TAE/logo - cópia.png" alt="The Algarve Experience"></a>
+      <a href="turntwo.html" target="_blank"><img src="img/turntwo/logo.png" alt="turntwo"></a>
+    </div>
+  </section>
+
+  <div class="container">
+    <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 2rem; text-align: center; color: #435b3a;">O MEU PERCURSO</h2>
+
+    <div class="photo">
+      <img src="IMG_6161.jpeg" alt="Foto de Bárbara Magalhães">
+    </div>
+    <p><strong>Designer Multimédia residente em Silves.</strong><br/>Apaixonada por Branding, UX/UI e Visual Design. Proativa, dedicada e criativa.</p>
+    <p>
+      Tenho 22 anos, sou licenciada em Multimédia pelo Instituto Politécnico de Bragança. Realizei Erasmus em Madrid e participei em projetos de UI/UX, redes sociais e branding. Tenho experiência em software como Figma, Illustrator, Premiere e Photoshop.
+    </p>
+    <a href="BarbaraMagalhaes_CV.pdf" class="button" target="_blank">Ver Currículo</a>
+  </div>
+
+  <div class="logo-carousel">
+    <div class="logo-track">
+      <img src="img/Empresas/Fnac_Logo.svg.png" alt="Fnac">
+      <img src="img/Empresas/logo - cópia.svg" alt="TAE">
+      <img src="img/Empresas/Logo_Continente_Bom_Dia.svg.png" alt="MC">
+      <img src="img/Empresas/taki.svg" alt="Taki-Tá-Lá">
+      <img src="img/Empresas/Fnac_Logo.svg.png" alt="Fnac">
+      <img src="img/Empresas/logo - cópia.svg" alt="TAE">
+      <img src="img/Empresas/Logo_Continente_Bom_Dia.svg.png" alt="MC">
+      <img src="img/Empresas/taki.svg" alt="Taki-Tá-Lá"><img src="img/Empresas/Fnac_Logo.svg.png" alt="Fnac">
+      <img src="img/Empresas/logo - cópia.svg" alt="TAE">
+      <img src="img/Empresas/Logo_Continente_Bom_Dia.svg.png" alt="MC">
+      <img src="img/Empresas/taki.svg" alt="Taki-Tá-Lá"><img src="img/Empresas/Fnac_Logo.svg.png" alt="Fnac">
+      <img src="img/Empresas/logo - cópia.svg" alt="TAE">
+      <img src="img/Empresas/Logo_Continente_Bom_Dia.svg.png" alt="MC">
+      <img src="img/Empresas/taki.svg" alt="Taki-Tá-Lá"><img src="img/Empresas/Fnac_Logo.svg.png" alt="Fnac">
+      <img src="img/Empresas/logo - cópia.svg" alt="TAE">
+      <img src="img/Empresas/Logo_Continente_Bom_Dia.svg.png" alt="MC">
+      <img src="img/Empresas/taki.svg" alt="Taki-Tá-Lá"><img src="img/Empresas/Fnac_Logo.svg.png" alt="Fnac">
+      <img src="img/Empresas/logo - cópia.svg" alt="TAE">
+      <img src="img/Empresas/Logo_Continente_Bom_Dia.svg.png" alt="MC">
+      <img src="img/Empresas/taki.svg" alt="Taki-Tá-Lá"><img src="img/Empresas/Fnac_Logo.svg.png" alt="Fnac">
+      <img src="img/Empresas/logo - cópia.svg" alt="TAE">
+      <img src="img/Empresas/Logo_Continente_Bom_Dia.svg.png" alt="MC">
+      <img src="img/Empresas/taki.svg" alt="Taki-Tá-Lá"><img src="img/Empresas/Fnac_Logo.svg.png" alt="Fnac">
+      <img src="img/Empresas/logo - cópia.svg" alt="TAE">
+      <img src="img/Empresas/Logo_Continente_Bom_Dia.svg.png" alt="MC">
+      <img src="img/Empresas/taki.svg" alt="Taki-Tá-Lá">
+    </div>
+  </div>
+
+  <div class="container experience">
+    <h1>Experiência</h1>
+    <div class="job">
+      <div class="job-header">
+        <span class="empresa">Continente</span>
+        <span class="date">Nov 2024 – Mai 2025</span>
+      </div>
+      <p class="role">Supervisora de Caixa</p>
+      <p>Atendimento · Coordenação de equipa · Caixa</p>
+    </div>
+    <div class="job">
+      <div class="job-header">
+        <span class="empresa">FNAC</span>
+        <span class="date">Set 2024 – Nov 2024</span>
+      </div>
+      <p class="role">Operadora</p>
+      <p>Vendas · Apoio ao Cliente · UX prática</p>
+    </div>
+    <div class="job">
+      <div class="job-header">
+        <span class="empresa">The Algarve Experience</span>
+        <span class="date">Jun 2024 – Ago 2024</span>
+      </div>
+      <p class="role">Freelancer / Estágios</p>
+      <p>UI/UX · Branding · Eventos</p>
+    </div>
+     <div class="job">
+      <div class="job-header">
+        <span class="empresa">Taki-Tá-Lá</span>
+        <span class="date">Set 2021 – Jun 2024</span>
+      </div>
+      <p class="role">Freelancer</p>
+      <p>Branding · Eventos</p>
+    </div>
+  </div>
+
+    <section class="call-to-action">
+    <h2>DAMOS VIDA AO<br/>TEU PROJETO, JUNTOS?</h2>
+    <a href="mailto:barbarartmagalhaes@hotmail.com" class="cta-button">CONTACTAR AGORA</a>
+    <div class="cta-image">
+      <img src="IMG_6161.jpeg" alt="Foto de Bárbara">
+    </div>
+    <div class="cta-text">
+      <p>Ao longo da licenciatura, tive a oportunidade de participar ativamente em palestras, workshops e concursos ligados à área da Multimédia, o que me permitiu expandir conhecimentos para além da sala de aula.<br/>
+      Esta experiência académica e extracurricular dotou-me de uma visão abrangente do universo digital, capacitando-me para trabalhar na conceção e produção de conteúdos multimédia. 
+      Estou apta a desempenhar funções que exigem sensibilidade estética e domínio técnico, contribuindo para o desenvolvimento de soluções interativas e inovadoras no campo da comunicação digital.</p>
+    </div>
+    <div class="cta-links">
+      <a href="https://www.behance.net/brbaramagalhes03" target="_blank">BEHANCE ↗</a>
+      <a href="https://www.instagram.com/barbaramag.studio?igsh=MmVqMmlqazkxOHRk&utm_source=qr" target="_blank">INSTAGRAM ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Bárbara Magalhães · Todos os direitos reservados
+  </footer>
+
+  <div id="custom-cursor"></div>
+
+  <script>
+  // ELEMENTOS INTERATIVOS DO CURSOR
+  const cursor = document.getElementById("custom-cursor");
+  let mouseX = 0, mouseY = 0;
+  let currentX = 0, currentY = 0;
+  const speed = 0.2;
+
+  function animateCursor() {
+    currentX += (mouseX - currentX) * speed;
+    currentY += (mouseY - currentY) * speed;
+    cursor.style.top = `${currentY}px`;
+    cursor.style.left = `${currentX}px`;
+    requestAnimationFrame(animateCursor);
+  }
+
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  animateCursor();
+
+  const interactiveElements = document.querySelectorAll("a, button, .contact-button");
+
+  interactiveElements.forEach(el => {
+    el.addEventListener("mouseenter", () => cursor.classList.add("cursor-grow"));
+    el.addEventListener("mouseleave", () => cursor.classList.remove("cursor-grow"));
+  });
+
+  document.addEventListener("mousedown", () => cursor.classList.add("cursor-click"));
+  document.addEventListener("mouseup", () => cursor.classList.remove("cursor-click"));
+
+  // ABRIR/FECHAR MENU
+  const menuToggle = document.getElementById("menuToggle");
+  const fullscreenMenu = document.getElementById("fullscreenMenu");
+
+  menuToggle.addEventListener("click", () => fullscreenMenu.style.display = "flex");
+  function closeMenu() {
+    fullscreenMenu.style.display = "none";
+  }
+
+  // ABRIR/FECHAR OVERLAY CONTACTO
+  const overlay = document.getElementById('contactOverlay');
+
+  function openContact() {
+    if (overlay) overlay.style.display = "flex";
+  }
+
+  function closeContact() {
+    if (overlay) {
+      overlay.style.display = "none";
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  // ESCONDER TEXTO "HERO" AO ROLAR
+  window.addEventListener('scroll', () => {
+    const footerText = document.getElementById('heroFooterText');
+    if (footerText) {
+      footerText.classList.toggle('hide', window.scrollY > 100);
+    }
+  });
+
+  // RELÓGIO FUNCIONAL EM TEMPO REAL
+  function updateClock() {
+    const now = new Date();
+    const time = now.toLocaleTimeString('pt-PT', { hour12: false });
+
+    const clock = document.getElementById("clock");
+    const fullscreenClock = document.getElementById("fullscreenClock");
+
+    if (clock) clock.textContent = time;
+    if (fullscreenClock) fullscreenClock.textContent = time;
+  }
+
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  </script>
+</body>
+</html>
